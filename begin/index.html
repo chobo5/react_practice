@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span id="count">Total clicks: 0</span>
+    <button id="countButton">increase count</button>
+    
+</body>
+
+<script>
+    let count = 0;
+    let countSpan = document.getElementById('count');
+    const button = document.getElementById('countButton');
+
+    button.addEventListener("click", () => {
+        countSpan.innerText = `Total clicks: ${++count}`;
+
+    }); 
+</script>
+</html>
+
