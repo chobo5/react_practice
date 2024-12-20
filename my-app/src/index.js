@@ -2,11 +2,18 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import App from "./App";
 
-import NotificationList from "./chapter_06/NotificiationList";
+
+const root = createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
 
 //chapter 03
-// const root = ReactDOM.createRoot(document.getElementById('root'));
+// const root = createRoot(document.getElementById('root'));
 // root.render(
 //   <React.StrictMode>
 //     <Library />
@@ -32,12 +39,12 @@ import NotificationList from "./chapter_06/NotificiationList";
 // )
 
 //chapter 06
-const root = createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <NotificationList />
-  </React.StrictMode>
-);
+// const root = createRoot(document.getElementById("root"));
+// root.render(
+//   <React.StrictMode>
+//     <NotificationList />
+//   </React.StrictMode>
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
