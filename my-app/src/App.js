@@ -5,7 +5,10 @@ function Header(props) {
   return (
     <header>
       <h1>
-        <a href='/'>{props.title}</a>
+        <a href='/' onClick={function(event) {
+          event.preventDefault();
+          props.onChangeMode();
+        }}>{props.title}</a>
       </h1>
     </header>
   );
@@ -19,7 +22,10 @@ function Nav(props) {
         {props.topics.map(topic => {
           return (
             <li key={topic.id}>
-            <a href={'/read/' + topic.id}>{topic.title}</a>
+            <a id={topic.id} href={'/read/' + topic.id} onClick={(event) => {
+              event.preventDefault();
+              props.onChangeMode(event.target.id);
+            }}>{topic.title}</a>
             </li>
           );
         })}
@@ -46,8 +52,12 @@ function App() {
 
   return (
     <div className="App">
-      <Header title="WEB"></Header>
-      <Nav topics={topics}></Nav>
+      <Header title="WEB" onChangeMode={function() {
+        alert('Altert');
+      }}></Header>
+      <Nav topics={topics} onChangeMode={(id) => {
+        alert(id);
+      }}></Nav>
       <Article title="Welcom" body="Hello, WEB"></Article>
     </div>
   );
