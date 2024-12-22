@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function Header(props) {
   return (
@@ -24,7 +25,7 @@ function Nav(props) {
             <li key={topic.id}>
             <a id={topic.id} href={'/read/' + topic.id} onClick={(event) => {
               event.preventDefault();
-              props.onChangeMode(event.target.id);
+              props.onChangeMode(Number(event.target.id));
             }}>{topic.title}</a>
             </li>
           );
@@ -44,21 +45,26 @@ function Article(props) {
 }
 
 function App() {
+  const [id, setId] = useState(null);
   const topics = [
+    {id: 0, title: 'Web', body: 'Hello, Web'},
     {id: 1, title: 'html', body: 'html is ...'},
     {id: 2, title: 'css', body: 'css is ...'},
     {id: 3, title: 'javascript', body: 'javascript is ...'},
   ];
 
+  let topic = id !== null ? topics.find((topic) => topic.id === id) : topics[0];
+
+  let article = <Article title={topic.title} body={topic.body}></Article>
   return (
     <div className="App">
       <Header title="WEB" onChangeMode={function() {
         alert('Altert');
       }}></Header>
       <Nav topics={topics} onChangeMode={(id) => {
-        alert(id);
+        setId(id);
       }}></Nav>
-      <Article title="Welcom" body="Hello, WEB"></Article>
+      {article}
     </div>
   );
 }
